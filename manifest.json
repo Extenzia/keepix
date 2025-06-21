@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "keepix",
+  "description": "Show dimensions of images and videos with download buttons.",
+  "version": "0.0.1",
+  "author":"nandha.kumar790@gmail.com",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title":"Configure image resolution display",
+    "default_icon": "images/wordmark-favicon 128.png"
+  },
+  "icons": {
+    "32": "images/wordmark-favicon 32.png",
+    "64": "images/wordmark-favicon 64.png",
+    "128": "images/wordmark-favicon 128.png",
+    "256": "images/wordmark-favicon 256.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "css": ["styles.css"],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "permissions":["downloads", "scripting"]
+}
