@@ -5,10 +5,11 @@
   "version": "0.0.1",
   "author":"nandha.kumar790@gmail.com",
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "index.html",
     "default_title":"Configure image resolution display",
     "default_icon": "images/wordmark-favicon 128.png"
   },
+  "options_page": "options.html",
   "icons": {
     "32": "images/wordmark-favicon 32.png",
     "64": "images/wordmark-favicon 64.png",
@@ -17,12 +18,12 @@
   },
   "content_scripts": [
     {
-      "js": ["scripts/content.js"],
+      "js": ["src/content.js"],
       "css": ["styles.css"],
       "matches": [
-        "<all_urls>"
+        "https://*.wikimedia.org/*"
       ]
     }
   ],
-  "permissions":["downloads", "scripting"]
+  "permissions":["downloads", "scripting", "storage"]
 }

@@ -48,7 +48,7 @@ function createOverlay(el, type) {
   return label;
 }
 
-function createDownloadButton(el) {
+function createDownloadButton(el) {  
   const btn = document.createElement("button");
   btn.textContent = "⬇️";
   btn.className = "media-download-btn";
@@ -85,6 +85,7 @@ function attachOverlay(el, type) {
   el.dataset.overlayAttached = "true";
 
   const overlay = createOverlay(el, type);
+
   const btn = createDownloadButton(el);
 
   if (!alwaysShow) {
@@ -96,8 +97,19 @@ function attachOverlay(el, type) {
 
 function initOverlays() {
   document.querySelectorAll("img").forEach((img) => {
-    if (img.complete) attachOverlay(img, "img");
-    else img.onload = () => attachOverlay(img, "img");
+
+    if(img.getBoundingClientRect().height < 250 || img.getBoundingClientRect().width < 250){
+      console.log("image too small");
+      return;
+    }
+
+    if (img.complete){
+      attachOverlay(img, "img");
+    } 
+    else {
+      img.onload = () => attachOverlay(img, "img");
+    } 
+
   });
 
   document.querySelectorAll("video").forEach((vid) => {
